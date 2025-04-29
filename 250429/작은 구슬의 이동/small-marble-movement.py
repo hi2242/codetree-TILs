@@ -15,7 +15,7 @@ N, T = map(int, input().split())
 R, C, D = input().split()
 
 R, C = int(R), int(C)
-dr = [0, -1, 1, 0]
+dr = [0, 1, -1, 0]
 dc = [1, 0, 0, -1]
 
 dir_str = {
