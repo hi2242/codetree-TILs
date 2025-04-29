@@ -12,12 +12,19 @@ dist = [int(move[1]) for move in moves]
 # 1 <= N <= 100
 # 1 <= 한 번에 움직이는 거리 <= 10
 
-dx = [0, 1, -1, 0]
-dy = [-1, 0, 0, 1]
+dx = [-1, 0, 0, 1]
+dy = [0, -1, 1, 0]
 
 dir_num = ["W", "S", "N", "E"]
+
+dir_x = dict(zip(dir_num, dx))
+dir_y = dict(zip(dir_num, dy))
 
 def solve():
     nx = ny = 0
     for i in range(n):
-        nx, ny = nx + (dx[moves[i][0]] * moves[i][1]), ny + (dy[moves[i][0]] * moves[i][1])
+        nx, ny = nx + (dir_x[dir[i]] * dist[i]), ny + (dir_y[dir[i]] * dist[i])
+
+    return nx, ny
+
+print(*solve())
