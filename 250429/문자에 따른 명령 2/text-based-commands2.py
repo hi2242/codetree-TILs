@@ -16,7 +16,8 @@ def solve():
 
     for i in range(len(command)):
         if command[i] == "L":
-            dir_num = (dir_num - 1) % 4
+            # 방향이 항상 양수 값이 될 수 있도록 + 4를 해주는 것이 좋다. (modulo 연산에도 영향이 없음)
+            dir_num = (dir_num - 1 + 4) % 4
 
         elif command[i] == "R":
             dir_num = (dir_num + 1) % 4
