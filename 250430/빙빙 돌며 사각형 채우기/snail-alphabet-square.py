@@ -9,7 +9,7 @@
 
 # [1] 알파벳 순환
 # Z(90)에서 91이 된다면 다시 65가 되도록 한다.
-# 65 + (k % 36)
+# 65 + (k % 26)
 
 # 입력
 # N(행), M(열)
@@ -38,7 +38,7 @@ def solve():
         nr, nc = cr + dr[dir_num], cc + dc[dir_num]
         
         if 0 <= nr < N and 0 <= nc < M and grid[nr][nc] == 0:
-            grid[nr][nc] = chr(65 + (alpha_num % 36))
+            grid[nr][nc] = chr(65 + (alpha_num % 26))
             cr, cc = nr, nc
             alpha_num += 1
             k += 1
