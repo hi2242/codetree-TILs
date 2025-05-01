@@ -17,21 +17,16 @@ def print_grid(array):
     for row in array:
         print(*row)
 
-def reverse_belt(array):
-    return list(reversed(array))
-
 def rotation():
     top_temp = belt[0][N - 1]
-    down_temp = belt[1][0]
+    down_temp = belt[1][N - 1]
     
     for i in range(N - 1, 0, -1):
         belt[0][i] = belt[0][i - 1]
-
-    for i in range(N - 1):
-        belt[1][i] = belt[1][i + 1]
-
+        belt[1][i] = belt[1][i - 1]
+        
     belt[0][0] = down_temp
-    belt[1][N-1] = top_temp
+    belt[1][0] = top_temp
 
 def solve():
     for _ in range(T):
@@ -42,10 +37,8 @@ def solve():
 # 컨베이어 벨트 상황
 N, T = map(int, input().split())
 belt = [list(map(int, input().split())) for _ in range(2)]
-belt[1] = reverse_belt(belt[1])
 
 # 출력
 # T초 후 컨베이어 벨트
 solve()
-belt[1] = reverse_belt(belt[1])
 print_grid(belt)
