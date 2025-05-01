@@ -42,8 +42,12 @@ def check(tr, tc):
 
 def solve():
     result = 0
-    for r in range(N - 2):
-        for c in range(N - 2):
+    for r in range(N):
+        for c in range(N):
+            # 반복 횟수에서 조건을 지정하기 싫으면 조건문으로 따로 빼도 된다.
+            if r + 2 >= N or c + 2 >= N:
+                continue
+
             if result < check(r, c):
                 result = check(r, c)
 
