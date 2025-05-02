@@ -90,13 +90,15 @@ def check(temp):
     count = 0
     for arr in temp:
         len_arr = 1
+
         for i in range(1, len(arr)):
             if arr[i - 1] == arr[i]:
                 len_arr += 1
 
-            if len_arr >= M:
-                count += 1
-                break
+        if len_arr >= M:
+            count += 1
+
+
 
     return count
 
