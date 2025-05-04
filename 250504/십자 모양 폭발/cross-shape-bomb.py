@@ -32,10 +32,15 @@ def drop():
     global grid
 
     for i in range(N):
+        temp = []
         for j in range(N - 1, 0, -1):
             if grid[j][i] == 0:
-                grid[j][i] = grid[j - 1][i]
-                grid[j - 1][i] = 0
+
+                for k in range(j - 1, -1, -1):
+                    if grid[k][i] != 0:
+                        grid[j][i] = grid[k][i]
+                        grid[k][i] = 0
+                        break
 
 def solve():
     bomb()
