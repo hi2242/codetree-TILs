@@ -30,17 +30,23 @@ def bomb():
 # 중력에 의해 다른 숫자들이 아래로 떨어짐
 def drop():
     global grid
-
+    global new_grid
     for i in range(N):
-        temp = []
-        for j in range(N - 1, 0, -1):
-            if grid[j][i] == 0:
+        idx = N - 1
 
-                for k in range(j - 1, -1, -1):
-                    if grid[k][i] != 0:
-                        grid[j][i] = grid[k][i]
-                        grid[k][i] = 0
-                        break
+        # 기존 제출했던 답에서 중복되는 행동을 제거한 형태
+        for j in range(N - 1, -1, -1):
+            if grid[j][i]:
+                new_grid[idx][i] = grid[j][i]
+                idx -= 1
+
+            # if grid[j][i] == 0:
+
+                # for k in range(j - 1, -1, -1):
+                #     if grid[k][i] != 0:
+                #         grid[j][i] = grid[k][i]
+                #         grid[k][i] = 0
+                #         break
 
 def solve():
     bomb()
@@ -54,9 +60,10 @@ def solve():
 # 1 <= r, c <= N
 N = int(input())
 grid = [list(map(int, input().split())) for _ in range(N)]
+new_grid = [[0 for _ in range(N)] for _ in range(N)]
 r, c = map(int, input().split())
 
 # 출력
 # 최종 격자 (숫자가 없으면 0으로 채움)
 solve()
-print_grid(grid)
+print_grid(new_grid)
