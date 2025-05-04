@@ -10,13 +10,14 @@ def print_grid(array):
 # K ~ K + M - 1번째 열까지 공간 차지
 # 다른 블럭과 맞닿거나 바닥에 닿으면 멈춤
 def drop():
-    status = False
-    for i in range(N):
-        if 1 in grid[i][K - 1:K - 1 + M]:   
-            grid[i - 1][K - 1:K + M - 1] = [1 for _ in range(M)]
-            break
-        elif N == 1 and not grid[i][K - 1]:
-            grid[i][K - 1] = 1
+    temp = [0 for _ in range(M)]
+    for i in range(K - 1, K - 1 + M):
+        for j in range(N - 1, 0, -1):
+            if not grid[j][i]:
+                temp[i - K + 1] = j
+                break
+
+    grid[min(temp)][K - 1:K - 1 + M] = [1 for _ in range(M)]
 
 def solve():
     drop()
