@@ -12,10 +12,13 @@ def print_grid(array):
 def drop():
     temp = [0 for _ in range(M)]
     for i in range(K - 1, K - 1 + M):
-        for j in range(N - 1, 0, -1):
-            if not grid[j][i]:
-                temp[i - K + 1] = j
+        for j in range(1, N):
+            if grid[j][i]:
+                temp[i - K + 1] = j - 1
                 break
+
+        else:
+            temp[i - K + 1] = N - 1
 
     grid[min(temp)][K - 1:K - 1 + M] = [1 for _ in range(M)]
 
