@@ -13,11 +13,10 @@ def solve(num, cnt):
         count += 1
         return
 
-    # Cutting
-    # if num > N - cnt:
-    #     return
+    for i in range(1, 5):
+        if cnt + i > N:
+            continue
 
-    for i in range(1, N - cnt + 1):
         for _ in range(i):
             result.append(i)
         solve(i, cnt + i)
