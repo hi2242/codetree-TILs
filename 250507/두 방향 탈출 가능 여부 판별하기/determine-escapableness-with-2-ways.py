@@ -11,7 +11,7 @@ def solve(cr, cc):
     for i in range(2):
         nr, nc = cr + dr[i], cc + dc[i]
         
-        if 0 <= nr < N and 0 <= nc < N and visited[nr][nc] == 0 and grid[nr][nc] == 1:
+        if 0 <= nr < N and 0 <= nc < M and visited[nr][nc] == 0 and grid[nr][nc] == 1:
             visited[nr][nc] = 1
             solve(nr, nc)
 
@@ -30,5 +30,4 @@ visited[0][0] = 1
 # 출력
 # 탈출 가능 여부
 solve(0, 0)
-
 print(visited[N - 1][M - 1])
