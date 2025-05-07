@@ -9,11 +9,10 @@ def draw():
 
 def solve(e):
     global count
-    draw()
 
     for elem in graph[e]:
         if not visited[elem]:
-            visited[elem] = True
+            visited[elem] = 1
             count += 1
             solve(elem)
 
@@ -32,5 +31,6 @@ count = 0
 
 # 출력
 # 1번 정점에서 출발하여 도달할 수 있는 서로 다른 정점의 수 (1번 정점 제외)
+draw()
 solve(1)
 print(count)
