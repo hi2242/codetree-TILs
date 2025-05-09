@@ -22,7 +22,7 @@ def solve():
 # 1 <= 동전의 금액 <= 10000
 N, M = map(int, input().split())
 coin = list(map(int, input().split()))
-dp = [10001 for _ in range(M + 1)]
+dp = [10001 for _ in range(10001)]
 
 # 출력
 # 최소 동전 수 (불가능하면 -1 출력)
