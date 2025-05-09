@@ -12,7 +12,6 @@ def solve():
             if i - j > 0:
                 dp[i] = min(dp[i - j] + 1, dp[i])
 
-
     return dp[M]
 
 # 입력
@@ -28,5 +27,8 @@ dp = [10001 for _ in range(M + 1)]
 # 출력
 # 최소 동전 수 (불가능하면 -1 출력)
 init()
-
-print(solve())
+result = solve()
+if result != 10001:
+    print(result)
+else:
+    print(-1)
