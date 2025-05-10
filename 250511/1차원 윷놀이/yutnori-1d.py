@@ -11,25 +11,24 @@
 # 이동한 말이 M번 지점에 도달하면 1점을 얻음
 # M에 도달한 말을 선택할 순 있지만 변화는 없음
 def solve(cnt):
-    global count, curr_num
+    global count, temp
     # 종료 조건
 
     if cnt == N:
         t_count = 0
         for j in range(K):
-            if sum(temp[j]) >= M - 1:
+            if temp[j] >= M:
                 t_count += 1
 
         count = max(count, t_count)
         return
 
     for i in range(K):
-        for j in range(cnt, N):
-            if sum(temp[i]) >= M - 1:
-                continue
-            temp[i].append(move[j])
-            solve(cnt + 1)
-            temp[i].pop()
+        if temp[i] >= M:
+            continue
+        temp[i] += move[cnt]
+        solve(cnt + 1)
+        temp[i] -= move[cnt]
 
 # 입력
 # N(턴의 수), M(번호), K(말의 수)
@@ -42,7 +41,7 @@ N, M, K = map(int, input().split())
 move = list(map(int, input().split()))
 result = [0 for _ in range(M)]
 result[0] = K
-temp = [[] for _ in range(K)]
+temp = [1 for _ in range(K)]
 count = 0
 
 # 출력
