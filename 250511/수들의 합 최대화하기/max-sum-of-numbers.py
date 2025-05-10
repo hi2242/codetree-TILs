@@ -15,7 +15,7 @@ def solve(cnt, row_num):
     for c in list(set(std) - set(col_num)):
         result.append(grid[row_num][c])
         col_num.append(c)
-        solve(cnt + 1, (row_num + 1) % 3)
+        solve(cnt + 1, (row_num + 1) % N)
         result.pop()
         col_num.remove(c)
 
