@@ -10,17 +10,19 @@
 # [2] 점수 획득
 # 이동한 말이 M번 지점에 도달하면 1점을 얻음
 # M에 도달한 말을 선택할 순 있지만 변화는 없음
+def compare():
+    global count
+    t_count = 0
+    for j in range(K):
+        if temp[j] >= M:
+            t_count += 1
+
+    count = max(count, t_count)
+
 def solve(cnt):
-    global count, temp
     # 종료 조건
-
+    compare()
     if cnt == N:
-        t_count = 0
-        for j in range(K):
-            if temp[j] >= M:
-                t_count += 1
-
-        count = max(count, t_count)
         return
 
     for i in range(K):
