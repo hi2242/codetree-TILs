@@ -13,18 +13,19 @@
 def solve(cnt):
     global count
     # 종료 조건
-    if cnt == N:
-        t_count = 0
-        for i in range(K):
-            if sum(temp[i]) >= M - 1:
-                t_count += 1
 
-        count = max(count, t_count)
+    if cnt == N:
         return
 
     for i in range(K):
         temp[i].append(move[cnt])
         solve(cnt + 1)
+        t_count = 0
+        for j in range(K):
+            if sum(temp[j]) >= M - 1:
+                t_count += 1
+
+        count = max(count, t_count)
         temp[i].pop()
 
 # 입력
