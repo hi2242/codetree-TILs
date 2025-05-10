@@ -2,11 +2,11 @@
 # 2N개의 정수 수열 A
 # 각각 N개씩 2개의 그룹으로 나눔
 # 각 그룹 원소합의 차가 최소가 되도록
-def divide(t):
-    temp_C = []
-    for a in A:
-        if a not in t:
-            temp_C.append(a)
+def divide(T):
+    temp_C = A.copy()
+    for t in T:
+        if t in temp_C:
+            temp_C.remove(t)
 
     return temp_C
 
