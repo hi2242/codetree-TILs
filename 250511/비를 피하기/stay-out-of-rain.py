@@ -29,19 +29,17 @@ def solve(sr, sc):
     d = deque()
     d.append((sr, sc))
     visited[sr][sc] = 1
-    count = 0
     
     while d:
         cr, cc = d.popleft()
-        count += 1
         for i in range(4):
             nr, nc = cr + dr[i], cc + dc[i]
 
             if 0 <= nr < N and 0 <= nc < N and visited[nr][nc] == 0 and grid[nr][nc] != 1:
                 d.append((nr, nc))
-                visited[nr][nc] = 1
+                visited[nr][nc] = visited[cr][cc] + 1
                 if grid[nr][nc] == 3:
-                    return count
+                    return visited[nr][nc] - 1
 
     return -1
 
