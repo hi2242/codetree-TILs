@@ -11,12 +11,13 @@
 # 만족도 : 인접한 날짜에 입은 옷의 화려함의 차이를 모두 더함
 def init():
     for i in range(N):
-        dp[0][i] = 0
+        if grid[i][0] == 1:
+            dp[0][i] = 0
 
 def solve():
     for i in range(1, M):
         for j in range(N):
-            if grid[j][0] <= i <= grid[j][1]:
+            if grid[j][0] - 1 <= i <= grid[j][1] - 1:
                 for k in range(N):
                     if grid[k][0] <= i <= grid[k][1]:
                         dp[i][j] = max(dp[i][j], dp[i - 1][k] + abs(grid[j][2] - grid[k][2]))
