@@ -9,7 +9,7 @@ N = int(input())
 
 # 호출부
 prod = 1
-for i in range(1, 10):
+for i in range(1, 11):
     prod *= i
     if prod >= N:
         print(i)
