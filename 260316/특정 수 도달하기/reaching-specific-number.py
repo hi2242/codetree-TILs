@@ -10,6 +10,8 @@ def solve(n_list: list[int]):
             print(f'{acc} {acc / i:.1f}')
             break
         acc += n_list[i]
+    else:
+        print(f'{acc} {acc / 10:.1f}')
 
 # 구현부
 number_list = list(map(int, input().split()))
