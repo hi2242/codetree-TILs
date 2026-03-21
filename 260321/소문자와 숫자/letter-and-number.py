@@ -9,5 +9,5 @@ s = input().rstrip()
 for c in s:
     if 'A' <= c <= 'Z':
         print(c.lower(), end='')
-    elif 'a' <= c <= 'z' or '1' <= c <= '9':
+    elif 'a' <= c <= 'z' or '0' <= c <= '9':
         print(c, end='')
