@@ -9,5 +9,5 @@ s = input().rstrip()
 L = len(s)
 print(s)
 for _ in range(L):
-    s = s[-1] + s[:-2] 
+    s = s[-1] + s[:-1] 
     print(s)
