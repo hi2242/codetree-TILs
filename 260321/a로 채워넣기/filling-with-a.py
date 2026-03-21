@@ -6,6 +6,7 @@ input = sys.stdin.readline
 
 # 구현부
 s = input().rstrip()
-s[1] = 'a'
-s[-2] = 'a'
-print(s)
+a = list(s)
+a[1] = 'a'
+a[-2] = 'a'
+print(*a, sep='')
