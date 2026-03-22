@@ -11,11 +11,13 @@ def solve(M, D):
             print('Yes' if D <= 31 else 'No')
         else:
             print('Yes' if D <= 30 else 'No')
-    else:
+    elif M <= 12:
         if M % 2 != 0:
             print('Yes' if D <= 30 else 'No')
         else:
             print('Yes' if D <= 31 else 'No')
+    else:
+        print('No')
 
 # 구현부
 M, D = map(int, input().split())
