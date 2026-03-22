@@ -4,7 +4,7 @@ input = sys.stdin.readline
 
 # 선언부
 def solve(n1: int, n2: int, A: list[int], B: list[int]):
-    for i in range(n1 - n2):
+    for i in range(n1 - n2 + 1):
         if A[i] == B[0]:
             for j in range(n2):
                 if A[i + j] != B[j]:
