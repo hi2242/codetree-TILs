@@ -1,29 +1,19 @@
-import sys
+n = int(input())
+sequence = list(map(int, input().split()))
 
-input = sys.stdin.readline
+arr = []
 
-# 선언부
-class Element:
-    def __init__(self, value, index):
-        self.value = value
-        self.index = index
+for i in range(n):
+    arr.append((sequence[i], i))
+
+arr.sort(key = lambda x: x[0])
+
+ans = [0] * n
+
+for i in range(n):
+    orign_idx = arr[i][1]
     
-    def print(self):
-        print(self.index, end=' ')
+    ans[orign_idx] = i + 1
 
-def solve(n: int, e_list: list[Element]):
-    answer = [0 for _ in range(N)]
-    for i in range(N):
-        answer[element_list[i].index] = i + 1
-    print(*answer)
-
-# 구현부
-N = int(input())
-n_list = list(map(int, input().split()))
-element_list = []
-
-for i in range(N):
-    element_list.append(Element(n_list[i], i))
-element_list.sort(key = lambda x: (x.value, x.index))
-
-solve(N, element_list)
+for i in ans:
+    print(i, end=" ")
