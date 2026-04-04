@@ -12,7 +12,7 @@ def print_extend(grid: list[list[int]], x1: int, y1: int, x2: int, y2: int):
         if grid[y2 + 1000 - 1][c + 1000] == 1:
             temp2 += 1
     else:
-        if temp1 == temp2:
+        if temp1 != 0 and temp1 == temp2:
             max_width = x2 - x1
         else:
             max_width = max(temp1, temp2)
@@ -24,7 +24,7 @@ def print_extend(grid: list[list[int]], x1: int, y1: int, x2: int, y2: int):
         if grid[r + 1000][x2 + 1000 - 1] == 1:
             temp2 += 1
     else:
-        if temp1 == temp2:
+        if temp1 != 0 and temp1 == temp2:
             max_height = y2 - y1
         else:
             max_height = max(temp1, temp2)
