@@ -34,11 +34,11 @@ def calc_height(grid: list[list[int]], y1: int, y2: int, x: int) -> int:
 def print_extend(grid: list[list[int]], x1: int, y1: int, x2: int, y2: int):
     max_width, max_height = 0, 0
     temp1 = calc_width(grid, x1, x2, y1)
-    temp2 = calc_width(grid, x1, x2, y2)
+    temp2 = calc_width(grid, x1, x2, y2 - 1)
     max_width = max(temp1, temp2)
 
     temp1 = calc_height(grid, y1, y2, x1)
-    temp2 = calc_height(grid, y1, y2, x2)
+    temp2 = calc_height(grid, y1, y2, x2 - 1)
     max_height = max(temp1, temp2)
 
     print(max_width * max_height)
