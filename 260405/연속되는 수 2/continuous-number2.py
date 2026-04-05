@@ -18,4 +18,7 @@ for i in range(N):
         max_count = max(max_count, count)
         count = 1
         preview = temp
+else:
+    max_count = max(max_count, count)
 print(max_count)
+
