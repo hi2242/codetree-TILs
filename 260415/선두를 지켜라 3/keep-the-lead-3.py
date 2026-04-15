@@ -13,7 +13,7 @@ def solve():
     # 같 = 0, A = 1, B = 2
     state = -1
     count = 0
-    for i in range(1, 1001):
+    for i in range(1, 1000001):
         if A[i] == 0:
             break
         if A[i] == B[i]:
@@ -32,7 +32,7 @@ def solve():
 
 # 구현부
 N, M = map(int, input().split())
-A, B = [0 for _ in range(1001)], [0 for _ in range(1001)]
+A, B = [0 for _ in range(1000001)], [0 for _ in range(1000001)]
 curr_idx = 0
 for _ in range(N):
     v, t = map(int, input().split())
