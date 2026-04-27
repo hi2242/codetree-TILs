@@ -14,20 +14,23 @@ def validate_range(r: int, c: int):
     return 0 <= r < N and 0 <= c < M and grid[r][c] == 0
 
 def solve():
-    direction, count = 0, 0
+    direction, count, difference = 0, 0, 0
     initial_alphabet = 'A'
     dr, dc = [0, 1, 0, -1], [1, 0, -1, 0]
     cr, cc = 0, 0
     while True:
         if count == N * M:
             break
-        grid[cr][cc] = get_next_alphabet(initial_alphabet, count)
+        if difference == 26:
+            difference = 0
+        grid[cr][cc] = get_next_alphabet(initial_alphabet, difference)
         if validate_range(cr + dr[direction], cc + dc[direction]):
             pass
         else:
             direction = (direction + 1) % 4
         cr, cc = cr + dr[direction], cc + dc[direction]
         count += 1
+        difference += 1
     print_grid(grid)
 
 # 구현부
