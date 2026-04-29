@@ -7,6 +7,9 @@ def solve():
     position = [0, 0]
     current_color = grid[0][0]
     result = 0
+    if grid[0][0] == grid[R - 1][C - 1]:
+        print(result)
+        return
     for i in range(1, R - 1):
         for j in range(1, C - 1):
             if grid[i][j] != current_color:
