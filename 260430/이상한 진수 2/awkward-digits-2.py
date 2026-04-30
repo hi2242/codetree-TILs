@@ -7,7 +7,8 @@ def translate(k: int):
     acc = 0
     for i in range(len(a)):
         if i == k:
-            acc += 1 * (2 ** (len(a) - 1 - i))
+            x = 1 if int(a[i]) == 0 else 0
+            acc += x * (2 ** (len(a) - 1 - i))
         else:
             acc += int(a[i]) * (2 ** (len(a) - 1 - i))
     return acc
