@@ -10,7 +10,7 @@ int grid[MAX_N][MAX_N], visited[MAX_N][MAX_N];
 void print_grid(int arr[][MAX_N]);
 void solve();
 bool validate(int r, int c);
-bool can_go();
+bool can_go(int r, int c);
 
 int main() {
     cin >> N >> K;
