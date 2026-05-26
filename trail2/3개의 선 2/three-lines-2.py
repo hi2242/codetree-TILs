@@ -27,10 +27,8 @@ def solve():
     L = len(lines)
     result = 0
     for i in range(L):
-        for j in range(L):
-            for k in range(L):
-                if len({i, j, k}) != 3:
-                    continue
+        for j in range(i + 1, L):
+            for k in range(j + 1, L):
                 x, y = sort_xy(i, j, k, lines)
                 for p in points:
                     if p[0] not in x and p[1] not in y:
