@@ -14,7 +14,7 @@ def check_cross(result) -> None:
     if len({numbers[i][i] for i in range(3)}) == 2:
         result.add(tuple(sorted({numbers[i][i] for i in range(3)})))
     if len({numbers[i][2 - i] for i in range(3)}) == 2:
-        result.add(tuple(sorted({numbers[i][i] for i in range(3)})))
+        result.add(tuple(sorted({numbers[i][2 - i] for i in range(3)})))
 
 def solve():
     result = set()
