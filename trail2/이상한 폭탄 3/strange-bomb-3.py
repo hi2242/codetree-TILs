@@ -5,31 +5,28 @@ input = sys.stdin.readline
 # 선언부
 MAX_NUM = 1000000
 
+def check_between(bombs_count, exploded, start, n):
+    for i in range(n + 1):
+        if not exploded[start + i]:
+            bombs_count[bombs[start + i]] += 1
+            exploded[start + i] = 1
+
 def find_max_count(bombs_count):
     max_count, idx = 0, 0
     for i in range(MAX_NUM + 1):
-        if bombs_count[i] > 1 and max_count <= bombs_count[i]:
-            max_count = bombs_count[i]
-            idx = i
-    return max_count, idx
+        if bombs_count[i] >= 2 and max_count <= bombs_count[i]:
+            max_count, idx = bombs_count[i], i
+    print(idx)
 
 def solve():
-    result = 0
-    max_count = 0
+    bombs_count = [0 for _ in range(MAX_NUM + 1)]
+    exploded = [0 for _ in range(N)]
     for i in range(N - K):
-        bombs_count = [0 for _ in range(MAX_NUM + 1)]
-        bombs_count[bombs[i]] += 1
-        for j in range(1, K + 1):
-            bombs_count[bombs[i + j]] += 1
-        if bombs_count[bombs[i]] < 2:
-            continue
-        count, idx = find_max_count(bombs_count)
-        if max_count < count:
-            max_count = count
-            result = idx
-        elif max_count == count:
-            result = max(result, idx)
-    print(result)
+        for j in range(K, 0, -1):
+            if bombs[i] == bombs[i + j]:
+                check_between(bombs_count, exploded, i, j)
+                break
+    find_max_count(bombs_count)
 
 # 구현부
 N, K = map(int, input().split())
