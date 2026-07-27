@@ -10,32 +10,25 @@ public class Main {
         }
     }
     public static int N;
-    public static int[] nums;
-    public static int smallestValue = Integer.MAX_VALUE;
-    public static Point secondPoint;
+    public static List<Integer> nums = new ArrayList<>();
+    public static int secondValue;
+    public static int answer = -1;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        nums = new int[N];
         for (int i = 0; i < N; i++) {
-            nums[i] = Integer.parseInt(st.nextToken());
-            smallestValue = Math.min(smallestValue, nums[i]);
+            nums.add(Integer.parseInt(st.nextToken()));
         }
-        secondPoint = new Point();
+        List<Integer> sortedNums = new ArrayList<>(nums);
+        Collections.sort(sortedNums);
         for (int i = 0; i < N; i++) {
-            if (smallestValue < nums[i] && secondPoint.v > nums[i]) {
-                secondPoint.v = nums[i];
-                secondPoint.i = i;
+            if (sortedNums.get(0) != sortedNums.get(i)) {
+                secondValue = sortedNums.get(i);
+                break;
             }
         }
-        int flag = 0;
-        for (int i = 0; i < N; i++) {
-            if (secondPoint.v == nums[i]) {
-                flag++;
-            }
-        }
-        secondPoint.i = (flag > 1) ? -1 : secondPoint.i + 1;
-        System.out.println(secondPoint.i);
+        int secondValueCount = Collections.frequency(nums, secondValue);
+        System.out.println((secondValueCount == 1) ? nums.indexOf(secondValue) + 1 : -1);
     }
 }
