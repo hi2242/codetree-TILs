@@ -71,20 +71,18 @@ def solution():
         
         while dq:
             cr, cc, ch, cw, ck = dq.popleft()
+            nr, nc = cr + dr[d], cc + dc[d]
+            if not is_valid(nr, nc, ch, cw):
+                can_push = False
+                break
             for index, knight in knights.items():
                 kr, kc, kh, kw, kk = knight
-                nr, nc = cr + dr[d], cc + dc[d]
-                if not is_valid(nr, nc, ch, cw):
-                    can_push = False
-                    break
                 if index in push_target or kk <= 0:
                     continue
 
                 if not(nr + ch <= kr or kr + kh <= nr or nc + cw <= kc or kc + kw <= nc):
                     dq.append(knight)
                     push_target.add(index)
-            if not can_push:
-                break
                                     
         if can_push:
             commit(push_target, knights, d, i)
