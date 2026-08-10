@@ -13,11 +13,18 @@
 # 풀이 순서
 import sys
 
-# 1. 파이썬 재귀 깊이 제한 늘리기 (Union-Find 필수)
 sys.setrecursionlimit(10**6)
-
-# 2. 빠른 입출력 적용
 input = sys.stdin.readline
+# print = sys.stdout.write
+
+N, M = map(int, input().split())
+command_list = [list(map(int, input().split())) for _ in range(M)]
+
+def solution():
+    s = [i for i in range(N + 1)]
+
+    for command in command_list:
+        query(command, s)
 
 def union(s, a, b):
     root_a = find(s, a)
@@ -29,26 +36,16 @@ def union(s, a, b):
 def find(parent, x):
     if parent[x] == x:
         return x
-    # 경로 압축 (Path Compression)
     parent[x] = find(parent, parent[x])
     return parent[x]
 
-def solution():
-    N, M = map(int, input().split())
-    
-    # 3. 딕셔너리 대신 '리스트' 사용 (0부터 N까지 공간 확보)
-    s = [i for i in range(N + 1)]
+def query(command, s):
+    q, a, b = command
+    if q == 0:
+        union(s, a, b)
+    else:
+        root_a = find(s, a)
+        root_b = find(s, b)
+        print(int(root_a == root_b))
 
-    # 4. 리스트를 미리 만들지 않고, 들어오는 즉시 하나씩 처리
-    for _ in range(M):
-        q, a, b = map(int, input().split())
-        
-        if q == 0:
-            union(s, a, b)
-        else:
-            root_a = find(s, a)
-            root_b = find(s, b)
-            print(1 if root_a == root_b else 0)
-
-if __name__ == "__main__":
-    solution()
+solution()
