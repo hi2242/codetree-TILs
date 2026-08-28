@@ -39,12 +39,9 @@ def insert_node(numbers):
 def find(numbers):
     t = root
     for number in numbers:
-        target = t.children.get(number)
-        if target is None:
-            return False
+        if t.end:
+            return True
         t = t.children[number]
-    if len(t.children):
-        return True
     return False
 
 def solve():
